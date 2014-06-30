@@ -28,6 +28,8 @@ The MATLAB Compiler Runtime (installed automatically if missing)
 * Shortcuts for many things
 * Overlay of a different annotation set, for example one obtained using a cell detection algorithm.
 * Resizable interface
+* Full image mode with shortcut 'f'
+* Helper mask for linking cells in densely populated images
 
 ## File format
 
@@ -72,3 +74,12 @@ links =
 
 * licence (probably BSD)
 * refactor the code (it's a huge mess)
+
+## Changelog
+
+New in v1.1:
+- NEW: Fullscreen toggle with 'f'
+- NEW: Helper mask for adding links
+- BUGFIX: Support for MATLAB 2014b new graphics engine
+- BUGFIX: Improved plotting performance (less rerendering)
+- NEW: faster tool to annotate links

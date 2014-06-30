@@ -1,31 +1,33 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3304138275" file="/home/pedro/Dropbox/Imperial/project/cell_annotator/CellAnnotator.prj" location="/home/pedro/Dropbox/Imperial/project/cell_annotator" name="CellAnnotator" preferred-package-location="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
+  <configuration build-checksum="922798569" file="/home/pedro/Dropbox/Imperial/project/cell_annotator/CellAnnotator.prj" location="/home/pedro/Dropbox/Imperial/project/cell_annotator" name="CellAnnotator" preferred-package-location="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
     <param.appname>CellAnnotator</param.appname>
     <param.icon />
     <param.icons />
-    <param.version>1.0</param.version>
+    <param.version>1.1</param.version>
     <param.authnamewatermark>Pedro Damian Kostelec</param.authnamewatermark>
     <param.email>web@pedro.si</param.email>
     <param.company />
     <param.summary>A utility to facilitate the annotation of cell images with dots connect the cells between consecutive frames (links).</param.summary>
-    <param.description />
+    <param.description>New in v1.1:
+- NEW: Fullscreen toggle with 'f'
+- NEW: Helper mask for adding links
+- BUGFIX: Support for MATLAB 2014b new graphics engine
+- BUGFIX: Improved plotting performance (less rerendering)
+- NEW: faster tool to annotate links</param.description>
     <param.screenshot />
     <param.guid />
     <param.installpath.string>/CellAnnotator/</param.installpath.string>
     <param.installpath.combo>option.installpath.userlocal</param.installpath.combo>
     <param.logo>${PROJECT_ROOT}/thumbnail.png</param.logo>
-    <param.install.notes>On the target computer, append the following to your LD_LIBRARY_PATH environment variable (Where {MCR_ROOT} is the directory the MCR has been installed into):&lt;br&gt; {MCR_ROOT}/runtime/glnxa64&lt;br&gt; {MCR_ROOT}/bin/glnxa64&lt;br&gt; {MCR_ROOT}/sys/os/glnxa64&lt;br&gt;{MCR_ROOT}/sys/opengl/glnxa64&lt;br&gt;</param.install.notes>
+    <param.install.notes>On the target computer, append the following to your LD_LIBRARY_PATH environment variable (Where {MCR_ROOT} is the directory the MCR has been installed into):&lt;br&gt; {MCR_ROOT}/runtime/glnxa64&lt;br&gt; {MCR_ROOT}/bin/glnxa64&lt;br&gt; {MCR_ROOT}/sys/os/glnxa64&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/native_threads&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/server&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64&lt;br&gt;</param.install.notes>
     <param.intermediate>${PROJECT_ROOT}/bin/for_testing</param.intermediate>
-    <param.files.only>${PROJECT_ROOT}/CellAnnotator/for_redistribution_files_only</param.files.only>
     <param.output>${PROJECT_ROOT}/bin/for_redistribution</param.output>
-    <param.enable.clean.build>false</param.enable.clean.build>
     <param.user.defined.mcr.options />
     <param.embed.ctf>true</param.embed.ctf>
     <param.server.ctf>${PROJECT_ROOT}/bin/for_testing/.ctf</param.server.ctf>
     <param.server.readme>${PROJECT_ROOT}/bin/for_testing/readme.txt</param.server.readme>
     <param.target.type>subtarget.standalone</param.target.type>
     <param.support.packages />
-    <param.required.mcr.products />
     <param.web.mcr>true</param.web.mcr>
     <param.package.mcr>false</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
@@ -38,24 +40,19 @@
     <unset>
       <param.icon />
       <param.icons />
-      <param.version />
       <param.authnamewatermark />
       <param.email />
       <param.company />
-      <param.description />
       <param.screenshot />
       <param.guid />
       <param.installpath.string />
       <param.install.notes />
-      <param.files.only />
-      <param.enable.clean.build />
       <param.user.defined.mcr.options />
       <param.embed.ctf />
       <param.server.ctf />
       <param.server.readme />
       <param.target.type />
       <param.support.packages />
-      <param.required.mcr.products />
       <param.web.mcr />
       <param.package.mcr />
       <param.no.mcr />
@@ -76,6 +73,7 @@
       <file>${PROJECT_ROOT}/getCurrentPopupString.m</file>
       <file>${PROJECT_ROOT}/ginput2/ginput.m</file>
       <file>${PROJECT_ROOT}/ginput2/ginput2.m</file>
+      <file>${PROJECT_ROOT}/patchline/patchline.m</file>
       <file>${PROJECT_ROOT}/private_correctIndex.m</file>
       <file>${PROJECT_ROOT}/relativepath/relativepath.m</file>
     </fileset.resources>
@@ -90,7 +88,7 @@
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/usr/local/MATLAB/R2014b</root>
+      <root>/usr/local/MATLAB/R2014a</root>
       <toolboxes>
         <toolbox name="fixedpoint" />
         <toolbox name="embeddedcoder" />
