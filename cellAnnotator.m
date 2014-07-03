@@ -53,7 +53,7 @@ function cellAnnotator
     colormaps = 'gray|jet|hsv|hot|cool';
     disableFilters = false;
     
-    testing = false;
+    testing = true;
     displayAnnomalies = true; % Mark annotations that might be erroneous
     ERRONEOUS_DISTANCE = 0.03; % Cells less than this far apart are erronous
 
@@ -70,7 +70,9 @@ function cellAnnotator
     BG_COLOR = [236, 240, 241] / 255;
     BG_COLOR2 = BG_COLOR / 2;
     FG_COLOR = [44, 62, 80] / 255;
-    DIRTY_COLOR = [243,156,18]/255;
+    WARNING_COLOR = [243,156,18]/255;
+    SUCCESS_COLOR = [46, 204, 113] / 255;
+    ACTIVE_COLOR = [52, 152, 219] / 255;
 
     % =====================================================================
     % ------------SETUP COMPONENTS-----------------------------------------
@@ -93,7 +95,7 @@ function cellAnnotator
     set(gcf,'Units', olduns);
     pix2chars=size_pixels(3:4)./size_characters(3:4);
     clear olduns;
-    
+
     hpactions = uipanel('Tag', 'Actions',...
         'Units', 'pixels',...
         'Position', [padding figHeight-actionsPanelHeight-padding-topFigOffset figWidth-2*padding actionsPanelHeight],...
@@ -101,7 +103,6 @@ function cellAnnotator
         'ShadowColor', BG_COLOR2, ...
         'HighlightColor', BG_COLOR2 ,...
         'Background', BG_COLOR2);
-
     hpviewer = uipanel('Tag', 'Viewer', ...
         'Visible', 'off', ...
         'Units', 'pixels',...
@@ -110,7 +111,6 @@ function cellAnnotator
         'ShadowColor', BG_COLOR, ...
         'HighlightColor', BG_COLOR,...
         'Position', [padding, padding, figWidth-2*padding, figHeight-actionsPanelHeight-padding * 3-topFigOffset]);
-
     hpactions1 = uipanel('Tag', 'Data',...
         'Units', 'norm',...
         'Position', [0 0.71 1 .29],...
@@ -134,7 +134,6 @@ function cellAnnotator
         'ShadowColor', BG_COLOR, ...
         'HighlightColor', BG_COLOR,...
         'Background', BG_COLOR);
-
     hcurImg = uicontrol('Style', 'text',...
         'String', '3/30',...
         'Parent', hpactions3,...
@@ -143,8 +142,6 @@ function cellAnnotator
         'HorizontalAlignment', 'right', ...
         'Units', 'norm',...
         'Position', [0.89 0.25 0.1 0.5]);
-
-
 
     hshowDots = uicontrol('Style', 'checkbox', ...
         'String', 'Show cells', ...
@@ -235,7 +232,7 @@ function cellAnnotator
     actWidth = 1/6;
     hactions = uibuttongroup(...
             'Units', 'norm',...
-            'parent', hpactions3,...
+            'Parent', hpactions3,...
             'Position', [0 0 0.4 1],...
             'BackgroundColor', BG_COLOR, ...
             'ForegroundColor', FG_COLOR, ...
@@ -284,6 +281,7 @@ function cellAnnotator
            'ForegroundColor', FG_COLOR, ...
            'Position', [actWidth*5 0 actWidth 1],...
            'Parent', hactions);
+    hactionslist = [hoff hadd hdel haddlinkfast haddlink hdellink];
 
     % Add uibuttongroup with togglebutton
 
@@ -532,7 +530,7 @@ function cellAnnotator
         if testing
         	foldn = '/home/pedro/Dropbox/Imperial/project/data/series30green';
         else
-            if ~isempty(imgFolderName) dr = imgFolderName; else; dr = pwd; end;
+            if ~isempty(imgFolderName); dr = imgFolderName; else dr = pwd; end;
             foldn = uigetdir(dr, 'Select folder with images');
             if foldn == 0
                 warning('Select the folder with images')
@@ -585,9 +583,7 @@ function cellAnnotator
         requestRedraw();
         displayUIElements();
 
-        profile on;
         performAction();
-
     end
 
     function hbrowsemat_callback(source, eventdata) %#ok<INUSD>
@@ -664,7 +660,7 @@ function cellAnnotator
         % Find dirty annotations
         I = getDirtyIndices();
 
-        set(hsave, 'Background', 'y');
+        set(hsave, 'Background', WARNING_COLOR);
         set(hsave, 'String', 'Saving');
         
         for i=1:numel(I)
@@ -679,7 +675,7 @@ function cellAnnotator
         usrAnnotations.dirty = cell(numImages, 1);
         resetDirtiness();
 
-        set(hsave, 'Background', 'g');
+        set(hsave, 'Background', SUCCESS_COLOR);
         set(hsave, 'String', 'Saved');
         pause(2);
         if ishandle(hsave)
@@ -689,7 +685,30 @@ function cellAnnotator
     end
 
     function changedAction_callback(~, eventdata)
-        switch eventdata.NewValue
+        % fprintf('Changed action callback\n')
+        act = buttonHandleToAction(eventdata.NewValue);
+        setAction(act);
+    end
+
+    function handle = actionToButtonHandle(act)
+        switch act
+            case ACTION_ADD
+                handle = hadd;
+            case ACTION_DEL
+                handle = hdel;
+            case ACTION_ADDLINK
+                handle = haddlink;
+            case ACTION_ADDLINKFAST
+                handle = haddlinkfast;
+            case ACTION_DELLINK
+                handle = hdellink;
+            case ACTION_OFF
+                handle = hoff;
+        end
+    end
+
+    function action = buttonHandleToAction(handle)
+        switch handle
             case hadd
                 action = ACTION_ADD;
             case hdel
@@ -704,6 +723,23 @@ function cellAnnotator
                 action = ACTION_OFF;
         end
     end
+
+    function setAction(newaction)
+        if newaction ~= action
+            fprintf('Switched from %d to %d\n', action, newaction);
+            escapeFromPreviousTool();
+            action = newaction;
+
+            handle = actionToButtonHandle(action);
+            set(hactions, 'SelectedObject', handle);
+            set(handle, 'Background', WARNING_COLOR)
+            pause(0.5)
+            set(hactionslist, 'Background', BG_COLOR);
+            set(handle, 'Background', ACTIVE_COLOR)
+        end
+    end
+
+
     % =====================================================================
     % -----------LISTENERS-------------------------------------------------
     % =====================================================================
@@ -713,6 +749,7 @@ function cellAnnotator
 
         if(isempty(keycode)); return; end
 
+        prevaction = action;
         switch keycode
             case {32 29} % {'space' 'rightarrow'}
                 nextImage();
@@ -724,34 +761,64 @@ function cellAnnotator
                 displayImage(curIdx, numImages);
                 displayAnnotations(curIdx, numImages);
             case {49 27}  % {'1' 'escape' }
-                action = ACTION_OFF;
-                set(hactions, 'SelectedObject', hoff);
+                setAction(ACTION_OFF);
+                % set(hactions, 'SelectedObject', hoff);
             case 50 %'2'
-                action = ACTION_ADD;
-                set(hactions, 'SelectedObject', hadd);
+                setAction(ACTION_ADD);
+                % set(hactions, 'SelectedObject', hadd);
             case 51 % '3'
-                action = ACTION_DEL;
-                set(hactions, 'SelectedObject', hdel);
+                setAction(ACTION_DEL);
+                % set(hactions, 'SelectedObject', hdel);
             case 52 % '4'
-                action = ACTION_ADDLINK;
-                set(hactions, 'SelectedObject', haddlink);
+                setAction(ACTION_ADDLINK);
+                % set(hactions, 'SelectedObject', haddlink);
             case 53 % '5'
-                action = ACTION_ADDLINKFAST;
-                set(hactions, 'SelectedObject', haddlinkfast);
+                setAction(ACTION_ADDLINKFAST);
+                % set(hactions, 'SelectedObject', haddlinkfast);
             case 54 % '6'
-                action = ACTION_DELLINK;
-                set(hactions, 'SelectedObject', hdellink);
+                setAction(ACTION_DELLINK);
+                % set(hactions, 'SelectedObject', hdellink);
             case 19 % ctrl + s
                 saveAnnotations();
             case 102  % 'f'
                 toggleFullScreen()
 
         end
+
+        if action ~= prevaction
+            fprintf('Switched from %d to %d\n', prevaction, action);
+            escapeFromPreviousTool()
+        end
     end
 
     % =====================================================================
     % -----------OTHER FUNCTIONS-------------------------------------------
     % =====================================================================
+
+    function escapeFromPreviousTool()
+        % TODO: set the figu user data to 1 to request an exit from the previous
+        % tool
+        set(gcf, 'UserData', 1);
+
+        % Triggers a keypress of the carriage return (13)
+        % to forge ginput to exit the loop, which permits an
+        % instant tool switch
+
+        %Initialize the java engine 
+        % import java.awt.*;
+        % import java.awt.event.*;
+        % %Create a Robot-object to do the key-pressing
+        % rob=Robot;
+        % rob.keyPress(13);
+        
+        % fprintf('Will press key\n')
+        % rob.keyPress(KeyEvent.VK_ENTER);
+        % rob.keyRelease(KeyEvent.VK_ENTER);
+
+
+
+        % fprintf('ENTER key was pressed by Robot\n')
+    end
 
     function toggleFullScreen()
         fullsize = ~fullsize;
@@ -808,13 +875,13 @@ function cellAnnotator
                 case ACTION_STOP
                     break
             end
-            pause(0.1)
+            pause(0.05);
         end
     end
 
     function checkForSave()
         if numel(getDirtyIndices()) > 0
-            color = DIRTY_COLOR;        
+            color = WARNING_COLOR;        
         else
             color = BG_COLOR;
         end
