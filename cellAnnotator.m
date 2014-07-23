@@ -1475,8 +1475,10 @@ function cellAnnotator
         
         % Display the links
         if get(hshowLinks, 'Value')
-            % Plot links
-            % Select nonzeros
+            % save('tmp.mat', 'linksCell', 'dotsCell')
+            tracklets = generateTracklets(dotsCell, linksCell);
+            trackletViewer(tracklets)
+           
             tmp_i = 1;
             for i=-ceil(nDisplays/2)+1:1:floor(nDisplays/2)-1
                 links = linksCell{tmp_i};
