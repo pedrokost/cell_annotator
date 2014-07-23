@@ -1,6 +1,5 @@
 function cellAnnotator
     %cellAnnotator GUI tool for cell and cell sequence annotation
-    
     set(0,'DefaultFigureCloseRequestFcn',@close_callback)
     
     if exist('relativepath', 'dir') == 7
@@ -11,6 +10,9 @@ function cellAnnotator
     end
     if exist('patchline', 'dir') == 7
         addpath('patchline');
+    end
+    if exist('distinguishable_colors', 'dir') == 7
+        addpath('distinguishable_colors');
     end
     % =====================================================================
     % ------------FUNCTION GLOBALS-----------------------------------------
@@ -528,7 +530,7 @@ function cellAnnotator
 
 
         if testing
-        	foldn = '/home/pedro/Dropbox/Imperial/project/data/series30green';
+        	foldn = 'data/annotations';
         else
             if ~isempty(imgFolderName); dr = imgFolderName; else dr = pwd; end;
             foldn = uigetdir(dr, 'Select folder with images');
@@ -588,7 +590,7 @@ function cellAnnotator
 
     function hbrowsemat_callback(source, eventdata) %#ok<INUSD>
         if testing
-            foldn = '/home/pedro/Dropbox/Imperial/project/data/kidneyredOUT';
+            foldn = 'data/detections';
         else
             foldn = uigetdir(imgFolderName, 'Select folder with annotations');
         end
@@ -1376,19 +1378,6 @@ function cellAnnotator
         drawnow
     end
 
-    function within = withinDisplayBoundaries(dots)
-        % for each dot return t/f if it lies within the region marked by the
-        % LINK_MARK_POS marker
-
-        within = ones(size(dots, 1), 1);
-
-        out = dots(:, 1) < LINK_MASK_POS - LINK_MASK_WIDTH / 2;
-        out = out | dots(:, 1) > LINK_MASK_POS + LINK_MASK_WIDTH / 2;
-
-        within(out) = 0;
-        within = logical(within);
-    end
-
     function private_displayAnnotations(ind, numImages, annotationType)
         dotsCell = cell(nDisplays, 1);
         dotsOrigCell = cell(nDisplays, 1);
@@ -1408,7 +1397,7 @@ function cellAnnotator
                 hiddenCol = [80 80 0] / 255;
                 colorLinks = [0.3 0.3 1];
                 lineStyle = '-.';
-                markerWidth = 1;
+                markerWidth = 2;
         end
 
         % Display masked images for easier annotation
@@ -1447,7 +1436,7 @@ function cellAnnotator
         end
 
         % Check which dots are within the margins
-        within = withinDisplayBoundaries(orig_dots);
+        within = withinDisplayBoundaries(orig_dots, LINK_MASK_POS, LINK_MASK_WIDTH);
 
         % Display any annomalies (dots too close)
         if strcmp(annotationType, 'usr') && displayAnnomalies
@@ -1475,37 +1464,25 @@ function cellAnnotator
         
         % Display the links
         if get(hshowLinks, 'Value')
-            % save('tmp.mat', 'linksCell', 'dotsCell')
             tracklets = generateTracklets(dotsCell, linksCell);
-            trackletViewer(tracklets)
-           
-            tmp_i = 1;
-            for i=-ceil(nDisplays/2)+1:1:floor(nDisplays/2)-1
-                links = linksCell{tmp_i};
-                dots0 = dotsCell{tmp_i};
-                dots0orig = dotsOrigCell{tmp_i};
-                dots1 = dotsCell{tmp_i+1};
-                I = find(links ~= 0);
-                c0 = dots0(I, :);
-                c1 = dots1(links(I), :);
-                within = withinDisplayBoundaries(dots0orig(I, :));
+            trackletsOrig = generateTracklets(dotsOrigCell, linksCell);
+            nTracklets = size(tracklets, 1);
+            maskedTracklets = zeros(nTracklets, 1);
+            for t=1:nTracklets
+                x = trackletsOrig(t, :, 1);
+                y = trackletsOrig(t, :, 2);
 
-                for l=1:numel(I)
-                    X = [c0(l, 1) c1(l, 1)];
-                    Y = [c0(l, 2) c1(l, 2)];
-                    
-                    if get(hmaskcheck, 'Value')
-                        transp = within(l) * 1 + (1-within(l)) * 0.2;
-                    else
-                        transp = 1;
-                    end
-                    h = patchline(X, Y, 'Parent', hviewer, 'LineStyle', lineStyle, ...
-                        'edgecolor', colorLinks, 'EdgeAlpha', transp);
-                    annotationHandles = [annotationHandles; h]; %#ok<AGROW>
-                end
+                % remove zeros (no particle detected)
+                zs = find(x ~= 0);
+                x = x(zs);
+                y = y(zs);
 
-                tmp_i = tmp_i + 1;
+                within = withinDisplayBoundaries([x', y'], LINK_MASK_POS, LINK_MASK_WIDTH);
+                maskedTracklets(t) = ~any(within);
             end
+            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets));
+
+            annotationHandles = [annotationHandles; h];
         end
     end
 

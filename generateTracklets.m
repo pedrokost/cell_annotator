@@ -48,6 +48,8 @@ function tracklets = generateTracklets(dotsCell, linksCell)
 
 		tracklets(1:currNumTracklets, f, :) = gFrameCells;
 	end
+
+	tracklets = tracklets(1:currNumTracklets, :, :);
 end
 
 function gFrameCell = getCellTrackletsFrame(dotsB, globalPremutation, currNumTracklets)
