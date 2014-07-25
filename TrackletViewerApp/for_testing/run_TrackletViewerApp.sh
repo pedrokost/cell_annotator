@@ -26,7 +26,7 @@ else
       args="${args} \"${token}\"" 
       shift
   done
-  eval "\"${exe_dir}/TrackletViewer\"" $args
+  eval "\"${exe_dir}/TrackletViewerApp\"" $args
 fi
 exit
 

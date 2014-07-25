@@ -1,6 +1,6 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3064318835" file="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer.prj" location="/home/pedro/Dropbox/Imperial/project/cell_annotator" name="TrackletViewer" preferred-package-location="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
-    <param.appname>TrackletViewer</param.appname>
+  <configuration build-checksum="2872449840" file="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp.prj" location="/home/pedro/Dropbox/Imperial/project/cell_annotator" name="TrackletViewerApp" preferred-package-location="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
+    <param.appname>TrackletViewerApp</param.appname>
     <param.icon />
     <param.icons />
     <param.version>1.0</param.version>
@@ -11,16 +11,16 @@
     <param.description />
     <param.screenshot />
     <param.guid />
-    <param.installpath.string>/TrackletViewer/</param.installpath.string>
+    <param.installpath.string>/TrackletViewerApp/</param.installpath.string>
     <param.installpath.combo>option.installpath.user</param.installpath.combo>
     <param.logo />
     <param.install.notes>On the target computer, append the following to your LD_LIBRARY_PATH environment variable (Where {MCR_ROOT} is the directory the MCR has been installed into):&lt;br&gt; {MCR_ROOT}/runtime/glnxa64&lt;br&gt; {MCR_ROOT}/bin/glnxa64&lt;br&gt; {MCR_ROOT}/sys/os/glnxa64&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/native_threads&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/server&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64&lt;br&gt;</param.install.notes>
-    <param.intermediate>${PROJECT_ROOT}/TrackletViewer/for_testing</param.intermediate>
-    <param.output>${PROJECT_ROOT}/TrackletViewer/for_redistribution</param.output>
+    <param.intermediate>${PROJECT_ROOT}/TrackletViewerApp/for_testing</param.intermediate>
+    <param.output>${PROJECT_ROOT}/TrackletViewerApp/for_redistribution</param.output>
     <param.user.defined.mcr.options />
     <param.embed.ctf>true</param.embed.ctf>
-    <param.server.ctf>${PROJECT_ROOT}/TrackletViewer/for_testing/.ctf</param.server.ctf>
-    <param.server.readme>${PROJECT_ROOT}/TrackletViewer/for_testing/readme.txt</param.server.readme>
+    <param.server.ctf>${PROJECT_ROOT}/TrackletViewerApp/for_testing/.ctf</param.server.ctf>
+    <param.server.readme>${PROJECT_ROOT}/TrackletViewerApp/for_testing/readme.txt</param.server.readme>
     <param.target.type>subtarget.standalone</param.target.type>
     <param.support.packages />
     <param.web.mcr>true</param.web.mcr>
@@ -65,11 +65,11 @@
       <param.log.file />
     </unset>
     <fileset.main>
-      <file>${PROJECT_ROOT}/TrackletViewer.m</file>
+      <file>${PROJECT_ROOT}/TrackletViewerApp.m</file>
     </fileset.main>
     <fileset.resources>
       <file>${PROJECT_ROOT}/DataStore.m</file>
-      <file>${PROJECT_ROOT}/TrackletViewer.fig</file>
+      <file>${PROJECT_ROOT}/TrackletViewerApp.fig</file>
       <file>${PROJECT_ROOT}/generateTracklets3D.m</file>
       <file>${PROJECT_ROOT}/getCellTrackletsFrame.m</file>
       <file>${PROJECT_ROOT}/trackletViewer3D.m</file>
@@ -77,10 +77,10 @@
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}/TrackletViewer/for_testing" name="readme.txt" optional="true">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing/readme.txt</file>
-      <file location="${PROJECT_ROOT}/TrackletViewer/for_testing" name="run_TrackletViewer.sh" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing/run_TrackletViewer.sh</file>
-      <file location="${PROJECT_ROOT}/TrackletViewer/for_testing" name="splash.png" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing/splash.png</file>
-      <file location="${PROJECT_ROOT}/TrackletViewer/for_testing" name="TrackletViewer" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing/TrackletViewer</file>
+      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="splash.png" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/splash.png</file>
+      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="readme.txt" optional="true">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="TrackletViewerApp" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/TrackletViewerApp</file>
+      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="run_TrackletViewerApp.sh" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/run_TrackletViewerApp.sh</file>
     </build-deliverables>
     <workflow />
     <matlab>

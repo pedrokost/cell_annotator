@@ -1,0 +1,32 @@
+ant:
+<ant>
+  <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_redistribution" />
+  <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing" />
+</ant>
+mcc -o TrackletViewerApp -W WinMain:TrackletViewerApp -T link:exe -d /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing -v /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/DataStore.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/generateTracklets3D.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/getCellTrackletsFrame.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/trackletsToPosition.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/trackletViewer3D.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp.fig 
+Compiler version: 5.1 (R2014a)
+Dependency analysis by REQUIREMENTS.
+[Warning: Requirements cannot analyze P-code unless the user provides a
+corresponding M-code along with the P-code in the same folder. The dependencies
+of /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp.fig
+may not be included in the completion because its corresponding M-code cannot
+be found by REQUIREMENTS.] 
+[> In MatlabSymbol>MatlabSymbol.findCorrespondentMCode at 975
+  In Completion>Completion.initializeRootSet at 1275
+  In Completion>Completion.Completion at 1860
+  In requirements at 182] 
+[Warning: Adding path "/home/pedro/Dropbox/Imperial/project/cell_annotator" to
+Compiler path instance.] 
+Parsing file "/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/deployprint.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/printdlg.m"
+	(Referenced from: "Compiler Command Line").
+Deleting 0 temporary MEX authorization files.
+Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/readme.txt".
+Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/run_TrackletViewerApp.sh".
+Packaging...
+Creating the bundle...
+Web based installer created at /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_redistribution/MyAppInstaller_web.install.
+Packaging complete.
