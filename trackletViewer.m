@@ -50,7 +50,7 @@ function handles = trackletViewer(tracklets, options)
 			h = patchline(x, y,'LineStyle', '-', ...
                         'edgecolor', colors(t, :), 'EdgeAlpha', 0.2);
 		else
-			h = plot(x,y,'-', 'Color', colors(t, :));
+			h = plot(x,y,'-.', 'Color', colors(t, :));
 		end
 		handles = [handles; h];
 

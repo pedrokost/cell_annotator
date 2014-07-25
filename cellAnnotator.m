@@ -2,16 +2,10 @@ function cellAnnotator
     %cellAnnotator GUI tool for cell and cell sequence annotation
     set(0,'DefaultFigureCloseRequestFcn',@close_callback)
     
-    if exist('relativepath', 'dir') == 7
+    if ~isdeployed
         addpath('relativepath');
-    end
-    if exist('ginput2', 'dir') == 7
         addpath('ginput2');
-    end
-    if exist('patchline', 'dir') == 7
         addpath('patchline');
-    end
-    if exist('distinguishable_colors', 'dir') == 7
         addpath('distinguishable_colors');
     end
     % =====================================================================
@@ -787,10 +781,10 @@ function cellAnnotator
 
         end
 
-        if action ~= prevaction
-            fprintf('Switched from %d to %d\n', prevaction, action);
-            escapeFromPreviousTool()
-        end
+%         if action ~= prevaction
+%             fprintf('Switched from %d to %d\n', prevaction, action);
+%             escapeFromPreviousTool()
+%         end
     end
 
     % =====================================================================
@@ -1480,7 +1474,7 @@ function cellAnnotator
                 within = withinDisplayBoundaries([x', y'], LINK_MASK_POS, LINK_MASK_WIDTH);
                 maskedTracklets(t) = ~any(within);
             end
-            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets));
+            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', false));
 
             annotationHandles = [annotationHandles; h];
         end

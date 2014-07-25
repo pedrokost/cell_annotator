@@ -1,0 +1,88 @@
+Loaded annotations for image 1 from disk
+Loaded annotations for image 2 from disk
+Loaded annotations for image 3 from disk
+Loaded detections for image 1 from disk
+Loaded detections for image 2 from disk
+Loaded detections for image 3 from disk
+Loaded detections for image 5 from disk
+Loaded detections for image 6 from disk
+Loaded detections for image 7 from disk
+Loaded annotations for image 5 from disk
+Loaded annotations for image 6 from disk
+Loaded annotations for image 7 from disk
+Loaded detections for image 10 from disk
+Loaded detections for image 11 from disk
+Loaded detections for image 12 from disk
+Loaded annotations for image 10 from disk
+Loaded annotations for image 11 from disk
+Loaded annotations for image 12 from disk
+Switched from 1 to 7
+Press Enter to stop selecting points
+Clicked on image 10 (-1) at [125 316]
+Press Enter to stop selecting points
+Clicked on image 11 (0) at [130 299]
+Clicked on image 12 (1) at [129 271]
+Added links from 121 308 (image 11) to 116 288 (image 12).
+Press Enter to stop selecting points
+Clicked on image 11 (0) at [115 294]
+Clicked on image 10 (-1) at [133 303]
+Added links from 123 317 (image 10) to 121 308 (image 11).
+Press Enter to stop selecting points
+Clicked on image 10 (-1) at [426 494]
+Clicked on image 11 (0) at [418 490]
+Clicked on image 12 (1) at [404 489]
+Added links from 413 494 (image 10) to 407 496 (image 11).
+Added links from 407 496 (image 11) to 405 491 (image 12).
+Press Enter to stop selecting points
+Loaded detections for image 13 from disk
+Loaded annotations for image 13 from disk
+Loaded detections for image 9 from disk
+Loaded annotations for image 9 from disk
+Loaded detections for image 14 from disk
+Loaded annotations for image 14 from disk
+Clicked on image 10 (-1) at [401 472]
+Clicked on image 11 (0) at [416 485]
+Clicked on image 13 (2) at [36 488]
+Warning: Your clicks must belongs to consecutive images.
+[> In doClick at 92
+  In cellAnnotator>performActionAddlink at 946
+  In cellAnnotator>performAction at 866
+  In cellAnnotator>hbrowse_callback at 582] 
+Press Enter to stop selecting points
+Clicked on image 9 (-2) at [414 488]
+Clicked on image 10 (-1) at [387 488]
+Clicked on image 11 (0) at [411 491]
+Clicked on image 12 (1) at [397 494]
+Added links from 413 497 (image 9) to 413 494 (image 10).
+Added links from 413 494 (image 10) to 407 496 (image 11).
+Added links from 407 496 (image 11) to 405 491 (image 12).
+Press Enter to stop selecting points
+Clicked on image 12 (1) at [413 497]
+Clicked on image 13 (2) at [417 485]
+Clicked on image 14 (3) at [410 491]
+Added links from 405 491 (image 12) to 405 486 (image 13).
+Added links from 405 486 (image 13) to 410 489 (image 14).
+Press Enter to stop selecting points
+Switched from 7 to 2
+Clicked on image 10 (-1) at [222 187]
+Clicked on image 10 (-1) at [219 199]
+Switched from 2 to 3
+Clicked on image 10 (-1) at [222 180]
+Deleted point 222 187 from image 10.
+Clicked on image 10 (-1) at [213 203]
+Deleted point 209 204 from image 10.
+Clicked on image 10 (-1) at [219 193]
+Deleted point 219 199 from image 10.
+Warning: Operands to the || and && operators must be convertible to logical scalar values.
+[> In ginput2 at 443
+  In doClick at 32
+  In cellAnnotator>performActionDell at 905
+  In cellAnnotator>performAction at 862
+  In cellAnnotator>hbrowse_callback at 582] 
+Warning: Error using ginput (line 84)
+Interrupted by figure deletion
+[> In ginput2 at 443
+  In doClick at 32
+  In cellAnnotator>performActionDell at 905
+  In cellAnnotator>performAction at 862
+  In cellAnnotator>hbrowse_callback at 582] 

@@ -3,7 +3,7 @@ ant:
   <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_redistribution" />
   <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing" />
 </ant>
-mcc -o CellAnnotator -W WinMain:CellAnnotator -T link:exe -d /home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing -v /home/pedro/Dropbox/Imperial/project/cell_annotator/cellAnnotator.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/basename.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/distancePointEdge.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/doClick.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/getCurrentPopupString.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/ginput2/ginput.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/ginput2/ginput2.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/patchline/patchline.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/private_correctIndex.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/relativepath/relativepath.m 
+mcc -o CellAnnotator -W WinMain:CellAnnotator -T link:exe -d /home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing -v /home/pedro/Dropbox/Imperial/project/cell_annotator/cellAnnotator.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/basename.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/distancePointEdge.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/distinguishable_colors/distinguishable_colors.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/doClick.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/generateTracklets.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/getCurrentPopupString.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/ginput2/ginput.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/ginput2/ginput2.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/patchline/patchline.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/private_correctIndex.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/relativepath/relativepath.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/trackletViewer.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/waitforbuttonpressfor.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/withinDisplayBoundaries.m 
 Compiler version: 5.1 (R2014a)
 Dependency analysis by REQUIREMENTS.
 [Warning: Adding path "/home/pedro/Dropbox/Imperial/project/cell_annotator" to
@@ -15,32 +15,32 @@ Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/deployprint.m"
 Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/printdlg.m"
 	(Referenced from: "Compiler Command Line").
 Deleting 26 temporary MEX authorization files.
-Removing: '/tmp/01abe0v1dOB_6846.auth'.
-Removing: '/tmp/01abedwO33b_6846.auth'.
-Removing: '/tmp/01abeCqZWjM_6846.auth'.
-Removing: '/tmp/01abeoeAYzm_6846.auth'.
-Removing: '/tmp/01abeiGm4PW_6846.auth'.
-Removing: '/tmp/01abeYiwd6w_6846.auth'.
-Removing: '/tmp/01abe5wmpm7_6846.auth'.
-Removing: '/tmp/01abeGgRDCH_6846.auth'.
-Removing: '/tmp/01abeWboWSh_6846.auth'.
-Removing: '/tmp/01abeCEJh9R_6846.auth'.
-Removing: '/tmp/01abeOoJFps_6846.auth'.
-Removing: '/tmp/01abe4rk6F2_6846.auth'.
-Removing: '/tmp/01abeBUxzWC_6846.auth'.
-Removing: '/tmp/01abeSJA5cd_6846.auth'.
-Removing: '/tmp/01abefKWEtN_6846.auth'.
-Removing: '/tmp/01abeXrVgKn_6846.auth'.
-Removing: '/tmp/01abeojRW0X_6846.auth'.
-Removing: '/tmp/01abe4YQFhy_6846.auth'.
-Removing: '/tmp/01abePPYXy8_6846.auth'.
-Removing: '/tmp/01abeLM0kQI_6846.auth'.
-Removing: '/tmp/01abe9a6V7i_6846.auth'.
-Removing: '/tmp/01abexLiApT_6846.auth'.
-Removing: '/tmp/01abePf8EHt_6846.auth'.
-Removing: '/tmp/01abeq5nNZ3_6846.auth'.
-Removing: '/tmp/01abejqA9hE_6846.auth'.
-Removing: '/tmp/01abeyWhBAe_6846.auth'.
+Removing: '/tmp/055d2JShy6U_21970.auth'.
+Removing: '/tmp/055d2cafAOo_21970.auth'.
+Removing: '/tmp/055d2d8GHwS_21970.auth'.
+Removing: '/tmp/055d2zWd4em_21970.auth'.
+Removing: '/tmp/055d2lR6xXP_21970.auth'.
+Removing: '/tmp/055d231G6Fj_21970.auth'.
+Removing: '/tmp/055d23odKoN_21970.auth'.
+Removing: '/tmp/055d2v9fs7g_21970.auth'.
+Removing: '/tmp/055d2oA7gQK_21970.auth'.
+Removing: '/tmp/055d2U4Eaze_21970.auth'.
+Removing: '/tmp/055d2TUq9hI_21970.auth'.
+Removing: '/tmp/055d2NAUc1b_21970.auth'.
+Removing: '/tmp/055d2oyHkKF_21970.auth'.
+Removing: '/tmp/055d2gxpxt9_21970.auth'.
+Removing: '/tmp/055d2nmrOcD_21970.auth'.
+Removing: '/tmp/055d2VZjaW6_21970.auth'.
+Removing: '/tmp/055d2CheDFA_21970.auth'.
+Removing: '/tmp/055d2bombp4_21970.auth'.
+Removing: '/tmp/055d2Hzeg9x_21970.auth'.
+Removing: '/tmp/055d2lCkoT1_21970.auth'.
+Removing: '/tmp/055d2NjZGDv_21970.auth'.
+Removing: '/tmp/055d2OwO1nZ_21970.auth'.
+Removing: '/tmp/055d20GsJ8s_21970.auth'.
+Removing: '/tmp/055d2rFouTW_21970.auth'.
+Removing: '/tmp/055d2FQNsEq_21970.auth'.
+Removing: '/tmp/055d281qtpU_21970.auth'.
 Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing/readme.txt".
 Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing/run_CellAnnotator.sh".
 Packaging...

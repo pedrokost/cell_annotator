@@ -30,7 +30,7 @@ function keypress = waitforbuttonpressfor(waitTime, timeResolution)
 			keypress = 0;
 			break;
 		elseif ~strcmp(oldchar, char)
-			double(char)
+			% double(char)
 			keypress = 1;
 			break;
 		elseif toc(startTime) >= waitTime
