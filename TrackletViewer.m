@@ -22,9 +22,12 @@ function varargout = TrackletViewer(varargin)
 
 % Edit the above text to modify the response to help TrackletViewer
 
-% Last Modified by GUIDE v2.5 25-Jul-2014 12:29:24
+% Last Modified by GUIDE v2.5 25-Jul-2014 12:34:06
 
 % Begin initialization code - DO NOT EDIT
+
+global DSIN foldn;
+
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -44,6 +47,8 @@ end
 % End initialization code - DO NOT EDIT
 
 % --- Executes just before TrackletViewer is made visible.
+
+
 function TrackletViewer_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
@@ -60,12 +65,13 @@ guidata(hObject, handles);
 % This sets up the initial plot - only do when we are invisible
 % so window can get raised using TrackletViewer.
 if strcmp(get(hObject,'Visible'),'off')
-    plot(rand(5));
 end
 
 % UIWAIT makes TrackletViewer wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
+function CloseRequestFcn(hObject, eventdata, handles)
+  delete(gcf);
 
 % --- Outputs from this function are returned to the command line.
 function varargout = TrackletViewer_OutputFcn(hObject, eventdata, handles)
@@ -82,21 +88,12 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-axes(handles.axes1);
-cla;
+global foldn DSIN;
 
-popup_sel_index = get(handles.popupmenu1, 'Value');
-switch popup_sel_index
-    case 1
-        plot(rand(5));
-    case 2
-        plot(sin(1:0.01:25.99));
-    case 3
-        bar(1:.5:10);
-    case 4
-        plot(membrane);
-    case 5
-        surf(peaks);
+if ~strcmp(foldn, '') && ~(strcmp(class(foldn),'double'))
+  clear DSIN;
+  DSIN = DataStore(foldn, false);
+  showTracklets(handles)
 end
 
 
@@ -139,26 +136,26 @@ end
 delete(handles.figure1)
 
 
-% --- Executes on selection change in popupmenu1.
-function popupmenu1_Callback(hObject, eventdata, handles)
-% hObject    handle to popupmenu1 (see GCBO)
+% --- Executes on button press in pushbutton7.
+function pushbutton7_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global foldn DSIN;
 
-% Hints: contents = get(hObject,'String') returns popupmenu1 contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from popupmenu1
+foldn = uigetdir(pwd, 'Select folder with annotations');
 
-
-% --- Executes during object creation, after setting all properties.
-function popupmenu1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to popupmenu1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: popupmenu controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-     set(hObject,'BackgroundColor','white');
+if ~strcmp(foldn, '') && ~(strcmp(class(foldn),'double'))
+  clear DSIN;
+  global DSIN;
+  DSIN = DataStore(foldn, false);
+  showTracklets(handles)
 end
 
-set(hObject, 'String', {'plot(rand(5))', 'plot(sin(1:0.01:25))', 'bar(1:.5:10)', 'plot(membrane)', 'surf(peaks)'});
+
+function showTracklets(handles)
+  cla;
+	tracklets = generateTracklets3D('in', struct('withAnnotations', true));
+	trackletViewer3D(tracklets, 'in', struct('animate', false, 'showLabels', false));
+  axis tight; 
+  rotate3d on

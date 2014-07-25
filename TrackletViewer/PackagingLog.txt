@@ -1,0 +1,23 @@
+ant:
+<ant>
+  <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_redistribution" />
+  <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing" />
+</ant>
+mcc -o TrackletViewer -W WinMain:TrackletViewer -T link:exe -d /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing -v /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer.m 
+Compiler version: 5.1 (R2014a)
+Dependency analysis by REQUIREMENTS.
+[Warning: Adding path "/home/pedro/Dropbox/Imperial/project/cell_annotator" to
+Compiler path instance.] 
+Parsing file "/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/deployprint.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/printdlg.m"
+	(Referenced from: "Compiler Command Line").
+Deleting 0 temporary MEX authorization files.
+Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing/readme.txt".
+Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_testing/run_TrackletViewer.sh".
+Packaging...
+Creating the bundle...
+Web based installer created at /home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewer/for_redistribution/MyAppInstaller_web.install.
+Packaging complete.
