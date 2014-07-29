@@ -29,7 +29,7 @@ function cellAnnotator
 
     annotationHandles = []; % Holds a list of annotation handlers
     
-    imgFormat = 'pgm';
+    imgFormats = {'pgm', 'png', 'jpg'};
     imgPrefix = 'im';
     imgGap = 25;
     imgWidth = 0;
@@ -543,7 +543,14 @@ function cellAnnotator
 
         imgFolderName = foldn;
         updateFolderPaths()
-        imgfileNames = dir(fullfile(imgFolderName, strcat(imgPrefix, '*.', imgFormat)));
+
+        imgfileNames = dir(fullfile(imgFolderName, strcat(imgPrefix, '*.', imgFormats{1})));
+        for imgFormat=2:numel(imgFormats)
+            imgfileNames2 = dir(fullfile(imgFolderName, strcat(imgPrefix, '*.', imgFormats{imgFormat})));
+            if numel(imgfileNames2) > numel(imgfileNames)
+                imgfileNames = imgfileNames2;
+            end
+        end
 
         numImages = numel(imgfileNames);
         nDisplays = min(nDisplays, numImages);
