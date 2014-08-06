@@ -593,7 +593,8 @@ function cellAnnotator
         if testing
             foldn = 'data/detections';
         else
-            foldn = uigetdir(imgFolderName, 'Select folder with annotations');
+            if ~isempty(detMatFolderName); dr = detMatFolderName; else dr = pwd; end;
+            foldn = uigetdir(dr, 'Select folder with annotations');
         end
 
         if foldn == 0
