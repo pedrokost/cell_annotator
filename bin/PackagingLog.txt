@@ -15,32 +15,32 @@ Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/deployprint.m"
 Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/printdlg.m"
 	(Referenced from: "Compiler Command Line").
 Deleting 26 temporary MEX authorization files.
-Removing: '/tmp/055d2JShy6U_21970.auth'.
-Removing: '/tmp/055d2cafAOo_21970.auth'.
-Removing: '/tmp/055d2d8GHwS_21970.auth'.
-Removing: '/tmp/055d2zWd4em_21970.auth'.
-Removing: '/tmp/055d2lR6xXP_21970.auth'.
-Removing: '/tmp/055d231G6Fj_21970.auth'.
-Removing: '/tmp/055d23odKoN_21970.auth'.
-Removing: '/tmp/055d2v9fs7g_21970.auth'.
-Removing: '/tmp/055d2oA7gQK_21970.auth'.
-Removing: '/tmp/055d2U4Eaze_21970.auth'.
-Removing: '/tmp/055d2TUq9hI_21970.auth'.
-Removing: '/tmp/055d2NAUc1b_21970.auth'.
-Removing: '/tmp/055d2oyHkKF_21970.auth'.
-Removing: '/tmp/055d2gxpxt9_21970.auth'.
-Removing: '/tmp/055d2nmrOcD_21970.auth'.
-Removing: '/tmp/055d2VZjaW6_21970.auth'.
-Removing: '/tmp/055d2CheDFA_21970.auth'.
-Removing: '/tmp/055d2bombp4_21970.auth'.
-Removing: '/tmp/055d2Hzeg9x_21970.auth'.
-Removing: '/tmp/055d2lCkoT1_21970.auth'.
-Removing: '/tmp/055d2NjZGDv_21970.auth'.
-Removing: '/tmp/055d2OwO1nZ_21970.auth'.
-Removing: '/tmp/055d20GsJ8s_21970.auth'.
-Removing: '/tmp/055d2rFouTW_21970.auth'.
-Removing: '/tmp/055d2FQNsEq_21970.auth'.
-Removing: '/tmp/055d281qtpU_21970.auth'.
+Removing: '/tmp/06f7chkQv9R_28540.auth'.
+Removing: '/tmp/06f7caYYRuf_28540.auth'.
+Removing: '/tmp/06f7c3HzgQC_28540.auth'.
+Removing: '/tmp/06f7cuRCLb0_28540.auth'.
+Removing: '/tmp/06f7cQBNjxn_28540.auth'.
+Removing: '/tmp/06f7cQ5QrWK_28540.auth'.
+Removing: '/tmp/06f7cJxgCl8_28540.auth'.
+Removing: '/tmp/06f7cN0TOKv_28540.auth'.
+Removing: '/tmp/06f7cbcu49S_28540.auth'.
+Removing: '/tmp/06f7c8damzg_28540.auth'.
+Removing: '/tmp/06f7cexsGYD_28540.auth'.
+Removing: '/tmp/06f7cI3Y2n1_28540.auth'.
+Removing: '/tmp/06f7czEorNo_28540.auth'.
+Removing: '/tmp/06f7cHIXRcM_28540.auth'.
+Removing: '/tmp/06f7c20nkC9_28540.auth'.
+Removing: '/tmp/06f7cbvPO1w_28540.auth'.
+Removing: '/tmp/06f7c0fEmrU_28540.auth'.
+Removing: '/tmp/06f7cuLVgVh_28540.auth'.
+Removing: '/tmp/06f7cvrWBpF_28540.auth'.
+Removing: '/tmp/06f7cFFB0T2_28540.auth'.
+Removing: '/tmp/06f7ctgkBoq_28540.auth'.
+Removing: '/tmp/06f7cVwqeTN_28540.auth'.
+Removing: '/tmp/06f7c1Fgbob_28540.auth'.
+Removing: '/tmp/06f7cjznpXy_28540.auth'.
+Removing: '/tmp/06f7cHCAPwW_28540.auth'.
+Removing: '/tmp/06f7cERgi6j_28540.auth'.
 Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing/readme.txt".
 Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing/run_CellAnnotator.sh".
 Packaging...

@@ -1,14 +1,20 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3863112128" file="/home/pedro/Dropbox/Imperial/project/cell_annotator/CellAnnotator.prj" location="/home/pedro/Dropbox/Imperial/project/cell_annotator" name="CellAnnotator" preferred-package-location="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
+  <configuration build-checksum="891287671" file="/home/pedro/Dropbox/Imperial/project/cell_annotator/CellAnnotator.prj" location="/home/pedro/Dropbox/Imperial/project/cell_annotator" name="CellAnnotator" preferred-package-location="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
     <param.appname>CellAnnotator</param.appname>
     <param.icon />
     <param.icons />
-    <param.version>1.2</param.version>
+    <param.version>1.3</param.version>
     <param.authnamewatermark>Pedro Kostelec</param.authnamewatermark>
     <param.email>web@pedro.si</param.email>
     <param.company />
     <param.summary>A utility to facilitate the annotation of cell images with dots connect the cells between consecutive frames (links).</param.summary>
-    <param.description>Changlelog 1.2:
+    <param.description>Changlelog 1.3:
+- NEW: Links are also shown for the leftmost and rightmost images
+- NEW: Link annomalies are now shown in a different style
+- REGRESSION: The image number is no longer accurate when watching the head/tail of the sequence
+- BUGFIX: Reloading detections using the Load Detections button no longer takes you back to the Data folder each time, but stays in the same (detection) folder
+
+Changlelog 1.2:
 - NEW: colored links
 - BUGFIX: fix repeated cursor blinking when switching tool
 Changelog 1.1:
