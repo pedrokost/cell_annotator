@@ -7,7 +7,7 @@ function handles = trackletViewer(tracklets, options)
 	maskedTracklets = [];
 	handles = [];
 	showLinkAnnomalies = false;
-	LINK_ANNOMALY_DISPLACEMENT = 15;
+	LINK_ANNOMALY_DISPLACEMENT = 10;
 	hideLongerThanOne = false;
 	%------------------------------------------------------------------Options
 	if nargin < 2; options = struct; end
@@ -37,7 +37,7 @@ function handles = trackletViewer(tracklets, options)
 	% 	maskedTracklets = maskedTracklets(nonSinglecellsTracklet);
 	% end
 	if hideLongerThanOne
-		long = sum(min(1, sum(abs(tracklets), 3)), 2) > 2;
+		long = sum(min(1, sum(abs(tracklets), 3)), 2) > 3;
 		tracklets = tracklets(~long, :, :);
 	end	
 	nTracklets = size(tracklets, trackletDim);

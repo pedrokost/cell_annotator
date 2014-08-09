@@ -1505,7 +1505,7 @@ function cellAnnotator
         end
 
         % Display the links
-        if get(hshowLinks, 'Value')
+        if get(hshowLinks, 'Value') && strcmp(annotationType, 'usr')
             tracklets = generateTracklets(dotsCell, linksCell);
             trackletsOrig = generateTracklets(dotsOrigCell, linksCell);
 
