@@ -27,11 +27,12 @@ function handles = trackletViewer(tracklets, options)
 	yDim = 2;
 
 	% Eliminate tracklets of only 1 cell
-	nonSinglecellsTracklet = sum(min(1, sum(tracklets, 3)), 2) > 1;
+	nonSinglecellsTracklet = sum(min(1, sum(abs(tracklets), 3)), 2) > 1;
 	tracklets = tracklets(nonSinglecellsTracklet, :, :);
 	if showMask
 		maskedTracklets = maskedTracklets(nonSinglecellsTracklet);
 	end
+	nTracklets = size(tracklets, trackletDim);
 
 	nTracklets = size(tracklets, trackletDim);
 	nFrames = size(tracklets, framesDim);

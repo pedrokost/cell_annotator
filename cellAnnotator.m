@@ -20,9 +20,9 @@ function cellAnnotator
     usrAnnotations = struct('dots', zeros(0, 2), 'links', zeros(0, 1)); % cache of annotation
     detAnnotations = struct('dots', zeros(0, 2), 'links', zeros(0, 1));
     
-    curIdx = 1;
-    numImages = 0;
+    numImages = 1;
     nDisplays = 4;
+    curIdx = 1; setImage(1);
 
     SNAP_PERCENTAGE = 0.10;  % percentage of image width that you can miss
     % an annotation and still select it (for hdel)
@@ -537,10 +537,6 @@ function cellAnnotator
             end
         end
 
-        if ~strcmp(foldn, imgFolderName)
-            curIdx = 1;  % rest the index, but only if we are not just refreshing the same dataset
-        end
-
         imgFolderName = foldn;
         updateFolderPaths()
 
@@ -555,6 +551,10 @@ function cellAnnotator
         numImages = numel(imgfileNames);
         nDisplays = min(nDisplays, numImages);
         images = cell(numImages, 1);
+
+        if ~strcmp(foldn, imgFolderName)
+            setImage(1);  % rest the index, but only if we are not just refreshing the same dataset
+        end
 
         usrAnnotations.dots = cell(numImages, 1);
         usrAnnotations.dirty = cell(numImages, 1);
@@ -649,7 +649,8 @@ function cellAnnotator
         value = round(get(hslider, 'Value'));
         if value == curIdx; return; end
         
-        curIdx = value;
+        setImage(value)
+
         displayImage(curIdx, numImages);
         displayAnnotations(curIdx, numImages);
     end
@@ -843,14 +844,19 @@ function cellAnnotator
         set(hpviewer, 'Units', oldunits)
     end
 
+    function setImage(value)
+        curIdx = min(value, numImages-floor(nDisplays/2));
+        curIdx = max(curIdx, ceil(nDisplays/2));
+    end
+
     function nextImage()
-        curIdx = min(curIdx + 1, numImages);
+        setImage(curIdx+1);
         displayImage(curIdx, numImages);
         displayAnnotations(curIdx, numImages);
     end
 
     function prevImage()
-        curIdx = max(1, curIdx - 1);
+        setImage(curIdx-1);
         displayImage(curIdx, numImages);
         displayAnnotations(curIdx, numImages);
     end
@@ -1197,7 +1203,9 @@ function cellAnnotator
         gap = zeros(size(Is{1}, 1), imgGap);
         imgWidth = size(Is{1}, 2);
         
-        cla(hviewer);
+        if ishandle(hviewer)
+            cla(hviewer);
+        end
         % assume all images same dimensions
         
         if ~disableFilters
@@ -1338,13 +1346,19 @@ function cellAnnotator
             end
         end
         
-        imagesc(I, 'Parent', hviewer); axis equal; axis tight;
+        if ishandle(hviewer)
+            imagesc(I, 'Parent', hviewer); axis equal; axis tight;
+            set(hviewer,'XTick',[],'YTIck',[], 'xcolor', BG_COLOR,'ycolor',BG_COLOR);
+        end
         
-        set(hviewer,'XTick',[],'YTIck',[], 'xcolor', BG_COLOR,'ycolor',BG_COLOR);
         tit = sprintf('%2d/%d', index, numImages);
-        set(hcurImg, 'String', tit);
+        if ishandle(hcurImg)
+            set(hcurImg, 'String', tit);
+        end
         % title(tit, 'Parent', hviewer)
-        set(hslider, 'Value', index);
+        if ishandle(hslider)
+            set(hslider, 'Value', index);
+        end
     end
 
     function displayAnnotations(index, numImages)
@@ -1428,11 +1442,9 @@ function cellAnnotator
         orig_dots = [];
         for i=-ceil(nDisplays/2)+1:1:floor(nDisplays/2)
             [d, l] = getAnnotations(ind+i, annotationType);
+
             orig_dots = vertcat(orig_dots, d); %#ok<AGROW>
-            dotsOrigCell{tmp_i} = d;
             d(:, 1) = d(:, 1) + (tmp_i-1)*(imgWidth + imgGap);
-            dotsCell{tmp_i} = d;
-            linksCell{tmp_i} = l;
             tmp_i = tmp_i + 1;
             dots = vertcat(dots, d); %#ok<AGROW>
         end
@@ -1464,10 +1476,30 @@ function cellAnnotator
             annotationHandles = [annotationHandles; h];
         end
         
+
+        % Generate the links data
+        tmp_i = 1;
+        for i=(-ceil(nDisplays/2)+0):1:(floor(nDisplays/2)+1)
+            if ind+i < 1; continue; end;
+            if ind+i > numImages; continue; end;
+            [d, l] = getAnnotations(ind+i, annotationType);
+
+            dotsOrigCell{tmp_i} = d;
+            if curIdx > ceil(nDisplays / 2)
+                d(:, 1) = d(:, 1) + (tmp_i-2)*(imgWidth + imgGap);
+            else
+                d(:, 1) = d(:, 1) + (tmp_i-1)*(imgWidth + imgGap);
+            end
+            dotsCell{tmp_i} = d;
+            linksCell{tmp_i} = l;
+            tmp_i = tmp_i + 1;
+        end
+
         % Display the links
         if get(hshowLinks, 'Value')
             tracklets = generateTracklets(dotsCell, linksCell);
             trackletsOrig = generateTracklets(dotsOrigCell, linksCell);
+
             nTracklets = size(tracklets, 1);
             maskedTracklets = zeros(nTracklets, 1);
             for t=1:nTracklets
@@ -1483,7 +1515,7 @@ function cellAnnotator
                 maskedTracklets(t) = ~any(within);
             end
 
-            showLinkAnnomalies = nDisplays > 3;
+            showLinkAnnomalies = nDisplays > 2;
             h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', true, 'showLinkAnnomalies', showLinkAnnomalies));
 
             annotationHandles = [annotationHandles; h];
