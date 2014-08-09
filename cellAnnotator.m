@@ -48,6 +48,7 @@ function cellAnnotator
     
     colormaps = 'gray|jet|hsv|hot|cool';
     disableFilters = false;
+    hideLongerThanOne = false;
     
     testing = false;
     displayAnnomalies = true; % Mark annotations that might be erroneous
@@ -787,6 +788,8 @@ function cellAnnotator
                 saveAnnotations();
             case 102  % 'f'
                 toggleFullScreen()
+            case 104  % 'h'
+                toggleHideLinked()
 
         end
 
@@ -842,6 +845,12 @@ function cellAnnotator
             set(hpactions, 'Visible', 'on');
         end
         set(hpviewer, 'Units', oldunits)
+    end
+
+    function toggleHideLinked()
+        fprintf('Will toggle hiding tracklets longer than 1\n');
+        hideLongerThanOne = ~hideLongerThanOne;
+        requestRedraw()
     end
 
     function setImage(value)
@@ -1467,7 +1476,7 @@ function cellAnnotator
         end
 
         % Display the dots
-        if get(hshowDots, 'Value')
+        if get(hshowDots, 'Value') && strcmp(annotationType, 'det')
             colors = bsxfun(@times, ones(size(orig_dots, 1), 3), col);
             if get(hmaskcheck, 'Value')
                 colors(~within, :) = repmat(hiddenCol, sum(~within), 1);
@@ -1516,7 +1525,8 @@ function cellAnnotator
             end
 
             showLinkAnnomalies = nDisplays > 2;
-            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', true, 'showLinkAnnomalies', showLinkAnnomalies));
+            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', false, 'showLinkAnnomalies', showLinkAnnomalies, 'hideLongerThanOne', hideLongerThanOne));
+
 
             annotationHandles = [annotationHandles; h];
         end

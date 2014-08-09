@@ -7,7 +7,8 @@ function handles = trackletViewer(tracklets, options)
 	maskedTracklets = [];
 	handles = [];
 	showLinkAnnomalies = false;
-	LINK_ANNOMALY_DISPLACEMENT = 20;
+	LINK_ANNOMALY_DISPLACEMENT = 15;
+	hideLongerThanOne = false;
 	%------------------------------------------------------------------Options
 	if nargin < 2; options = struct; end
 
@@ -19,6 +20,9 @@ function handles = trackletViewer(tracklets, options)
 	if isfield(options, 'maskedTracklets');
 		maskedTracklets = options.maskedTracklets;
 	end
+	if isfield(options, 'hideLongerThanOne');
+		hideLongerThanOne = options.hideLongerThanOne;
+	end
 
 	timeDim = 2;
 	trackletDim = 1;
@@ -27,11 +31,15 @@ function handles = trackletViewer(tracklets, options)
 	yDim = 2;
 
 	% Eliminate tracklets of only 1 cell
-	nonSinglecellsTracklet = sum(min(1, sum(abs(tracklets), 3)), 2) > 1;
-	tracklets = tracklets(nonSinglecellsTracklet, :, :);
-	if showMask
-		maskedTracklets = maskedTracklets(nonSinglecellsTracklet);
-	end
+	% nonSinglecellsTracklet = sum(min(1, sum(abs(tracklets), 3)), 2) > 1;
+	% tracklets = tracklets(nonSinglecellsTracklet, :, :);
+	% if showMask
+	% 	maskedTracklets = maskedTracklets(nonSinglecellsTracklet);
+	% end
+	if hideLongerThanOne
+		long = sum(min(1, sum(abs(tracklets), 3)), 2) > 2;
+		tracklets = tracklets(~long, :, :);
+	end	
 	nTracklets = size(tracklets, trackletDim);
 
 	nTracklets = size(tracklets, trackletDim);
@@ -54,9 +62,9 @@ function handles = trackletViewer(tracklets, options)
 
 		if halfOpacity
 			h = patchline(x, y,'LineStyle', '-', ...
-                        'edgecolor', colors(t, :), 'EdgeAlpha', 0.2);
+                        'edgecolor', colors(t, :), 'EdgeAlpha', 0.1);
 		else
-			h = plot(x,y,'-.', 'Color', colors(t, :));
+			h = plot(x,y,'-.+', 'Color', colors(t, :), 'MarkerSize', 10);
 		end
 		handles = [handles; h];
 
