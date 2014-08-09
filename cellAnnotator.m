@@ -22,7 +22,7 @@ function cellAnnotator
     
     curIdx = 1;
     numImages = 0;
-    nDisplays = 3;
+    nDisplays = 4;
 
     SNAP_PERCENTAGE = 0.10;  % percentage of image width that you can miss
     % an annotation and still select it (for hdel)
@@ -49,7 +49,7 @@ function cellAnnotator
     colormaps = 'gray|jet|hsv|hot|cool';
     disableFilters = false;
     
-    testing = false;
+    testing = true;
     displayAnnomalies = true; % Mark annotations that might be erroneous
     ERRONEOUS_DISTANCE = 0.03; % Cells less than this far apart are erronous
 
@@ -1482,7 +1482,9 @@ function cellAnnotator
                 within = withinDisplayBoundaries([x', y'], LINK_MASK_POS, LINK_MASK_WIDTH);
                 maskedTracklets(t) = ~any(within);
             end
-            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', false));
+
+            showLinkAnnomalies = nDisplays > 3;
+            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', true, 'showLinkAnnomalies', showLinkAnnomalies));
 
             annotationHandles = [annotationHandles; h];
         end
