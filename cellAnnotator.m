@@ -20,7 +20,7 @@ function cellAnnotator
     usrAnnotations = struct('dots', zeros(0, 2), 'links', zeros(0, 1)); % cache of annotation
     detAnnotations = struct('dots', zeros(0, 2), 'links', zeros(0, 1));
     
-    numImages = 1;
+    numImages = 3;
     nDisplays = 4;
     curIdx = 1; setImage(1);
 
@@ -49,7 +49,7 @@ function cellAnnotator
     colormaps = 'gray|jet|hsv|hot|cool';
     disableFilters = false;
     
-    testing = true;
+    testing = false;
     displayAnnomalies = true; % Mark annotations that might be erroneous
     ERRONEOUS_DISTANCE = 0.03; % Cells less than this far apart are erronous
 
