@@ -60,13 +60,14 @@ function handles = trackletViewer(tracklets, options)
 
 		halfOpacity = showMask && maskedTracklets(t);
 
-		if halfOpacity
-			h = patchline(x, y,'LineStyle', '-', ...
-                        'edgecolor', colors(t, :), 'EdgeAlpha', 0.1);
-		else
+		if ~halfOpacity
+			%h = patchline(x, y,'LineStyle', '-', ...
+            %            'edgecolor', colors(t, :), 'EdgeAlpha', 0.1);
+            %else
 			h = plot(x,y,'-.+', 'Color', colors(t, :), 'MarkerSize', 10);
+            handles = [handles; h];
 		end
-		handles = [handles; h];
+		
 
 		if showLinkAnnomalies
 			poses = [x; y]';
