@@ -1,49 +1,51 @@
 ant:
 <ant>
-  <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_redistribution" />
-  <mkdir dir="/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing" />
+  <mkdir dir="C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\bin\for_redistribution" />
+  <mkdir dir="C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\bin\for_testing" />
 </ant>
-mcc -o CellAnnotator -W WinMain:CellAnnotator -T link:exe -d /home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing -v /home/pedro/Dropbox/Imperial/project/cell_annotator/cellAnnotator.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/basename.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/distancePointEdge.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/distinguishable_colors/distinguishable_colors.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/doClick.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/generateTracklets.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/getCurrentPopupString.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/ginput2/ginput.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/ginput2/ginput2.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/patchline/patchline.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/private_correctIndex.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/relativepath/relativepath.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/trackletViewer.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/waitforbuttonpressfor.m -a /home/pedro/Dropbox/Imperial/project/cell_annotator/withinDisplayBoundaries.m 
+mcc -C -o CellAnnotator -W WinMain:CellAnnotator -T link:exe -d C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\bin\for_testing -v C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\cellAnnotator.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\basename.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\distancePointEdge.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\distinguishable_colors\distinguishable_colors.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\doClick.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\generateTracklets.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\getCurrentPopupString.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\ginput2\ginput.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\ginput2\ginput2.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\patchline\patchline.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\private_correctIndex.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\relativepath\relativepath.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\trackletViewer.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\waitforbuttonpressfor.m -a C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\withinDisplayBoundaries.m 
 Compiler version: 5.1 (R2014a)
 Dependency analysis by REQUIREMENTS.
-[Warning: Adding path "/home/pedro/Dropbox/Imperial/project/cell_annotator" to
-Compiler path instance.] 
-Parsing file "/home/pedro/Dropbox/Imperial/project/cell_annotator/cellAnnotator.m"
+[Warning: Adding path "C:\Users\pedro\Dropbox\Imperial\project\cell_annotator"
+to Compiler path instance.] 
+Parsing file "C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\cellAnnotator.m"
 	(Referenced from: "Compiler Command Line").
-Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/deployprint.m"
+Parsing file "C:\Program Files\MATLAB\R2014a\toolbox\compiler\deploy\deployprint.m"
 	(Referenced from: "Compiler Command Line").
-Parsing file "/usr/local/MATLAB/R2014a/toolbox/compiler/deploy/printdlg.m"
+Parsing file "C:\Program Files\MATLAB\R2014a\toolbox\compiler\deploy\printdlg.m"
 	(Referenced from: "Compiler Command Line").
 Deleting 26 temporary MEX authorization files.
-Removing: '/tmp/0090fggav0Z_2319.auth'.
-Removing: '/tmp/0090fbWEQuT_2319.auth'.
-Removing: '/tmp/0090fHuikZM_2319.auth'.
-Removing: '/tmp/0090fqX6CuG_2319.auth'.
-Removing: '/tmp/0090fCz8c0z_2319.auth'.
-Removing: '/tmp/0090fDSQYvt_2319.auth'.
-Removing: '/tmp/0090fiU3r2m_2319.auth'.
-Removing: '/tmp/0090fV264yg_2319.auth'.
-Removing: '/tmp/0090fNvRj69_2319.auth'.
-Removing: '/tmp/0090fUtMFD3_2319.auth'.
-Removing: '/tmp/0090fSAP7aX_2319.auth'.
-Removing: '/tmp/0090f5wmrJQ_2319.auth'.
-Removing: '/tmp/0090f3tpShK_2319.auth'.
-Removing: '/tmp/0090f5nCpQD_2319.auth'.
-Removing: '/tmp/0090fkV9apx_2319.auth'.
-Removing: '/tmp/0090fkOmqYq_2319.auth'.
-Removing: '/tmp/0090fONncyk_2319.auth'.
-Removing: '/tmp/0090fLPi57d_2319.auth'.
-Removing: '/tmp/0090fzPI9K7_2319.auth'.
-Removing: '/tmp/0090fGCdqo1_2319.auth'.
-Removing: '/tmp/0090furgh3U_2319.auth'.
-Removing: '/tmp/0090fWEIfIO_2319.auth'.
-Removing: '/tmp/0090fHHuBrI_2319.auth'.
-Removing: '/tmp/0090fYpF4aC_2319.auth'.
-Removing: '/tmp/0090fKnJfWv_2319.auth'.
-Removing: '/tmp/0090fXFQ0Hp_2319.auth'.
-Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing/readme.txt".
-Generating file "/home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_testing/run_CellAnnotator.sh".
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_2225_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_32331_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_1787_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_10982_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_21985_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_24240_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_32051_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_13382_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_24292_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_6266_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_1176_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_26124_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_16124_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_12343_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_19604_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_15043_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_11285_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_21362_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_7824_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_8195_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_16376_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_19743_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_4293_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_11762_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_25026_5756.auth'.
+Removing: 'C:\Users\pedro\AppData\Local\Temp\mathworks_tmp_5756_6458_5756.auth'.
+Generating file "C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\bin\for_testing\readme.txt".
 Packaging...
+Adding custom icon C:\Program Files\MATLAB\R2014a\toolbox\compiler\Resources\default_icon.ico to C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\bin\for_testing\CellAnnotator.exe.
+Attempting to embed the CTF archive into the application C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\bin\for_testing\CellAnnotator.exe.
+Finished embedding CTF archive. Deleting the external CTF archive.
 Creating the bundle...
-Web based installer created at /home/pedro/Dropbox/Imperial/project/cell_annotator/bin/for_redistribution/MyAppInstaller_web.install.
+Web based installer created at C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\bin\for_redistribution\MyAppInstaller_web.exe.
 Packaging complete.
