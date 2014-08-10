@@ -1,26 +1,29 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="2872449840" file="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp.prj" location="/home/pedro/Dropbox/Imperial/project/cell_annotator" name="TrackletViewerApp" preferred-package-location="/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
+  <configuration build-checksum="515662277" file="C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\TrackletViewerApp.prj" location="C:\Users\pedro\Dropbox\Imperial\project\cell_annotator" name="TrackletViewerApp" preferred-package-location="C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\TrackletViewerApp\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications">
     <param.appname>TrackletViewerApp</param.appname>
     <param.icon />
     <param.icons />
-    <param.version>1.0</param.version>
-    <param.authnamewatermark>Pedro Damian Kostelec</param.authnamewatermark>
-    <param.email>web@pedro.si</param.email>
+    <param.version>1.1</param.version>
+    <param.authnamewatermark>Pedro Kostelec</param.authnamewatermark>
+    <param.email />
     <param.company />
-    <param.summary>3d viewer of link annotations</param.summary>
+    <param.summary>3d viewer of link annotations
+
+Changelog 1.1 (9.8.2014)
+- NEW: Resizable window</param.summary>
     <param.description />
     <param.screenshot />
     <param.guid />
-    <param.installpath.string>/TrackletViewerApp/</param.installpath.string>
-    <param.installpath.combo>option.installpath.user</param.installpath.combo>
+    <param.installpath.string>\TrackletViewerApp\</param.installpath.string>
+    <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
     <param.logo />
-    <param.install.notes>On the target computer, append the following to your LD_LIBRARY_PATH environment variable (Where {MCR_ROOT} is the directory the MCR has been installed into):&lt;br&gt; {MCR_ROOT}/runtime/glnxa64&lt;br&gt; {MCR_ROOT}/bin/glnxa64&lt;br&gt; {MCR_ROOT}/sys/os/glnxa64&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/native_threads&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/server&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64&lt;br&gt;</param.install.notes>
-    <param.intermediate>${PROJECT_ROOT}/TrackletViewerApp/for_testing</param.intermediate>
-    <param.output>${PROJECT_ROOT}/TrackletViewerApp/for_redistribution</param.output>
+    <param.install.notes />
+    <param.intermediate>${PROJECT_ROOT}\TrackletViewerApp\for_testing</param.intermediate>
+    <param.output>${PROJECT_ROOT}\TrackletViewerApp\for_redistribution</param.output>
     <param.user.defined.mcr.options />
     <param.embed.ctf>true</param.embed.ctf>
-    <param.server.ctf>${PROJECT_ROOT}/TrackletViewerApp/for_testing/.ctf</param.server.ctf>
-    <param.server.readme>${PROJECT_ROOT}/TrackletViewerApp/for_testing/readme.txt</param.server.readme>
+    <param.server.ctf>${PROJECT_ROOT}\TrackletViewerApp\for_testing\.ctf</param.server.ctf>
+    <param.server.readme>${PROJECT_ROOT}\TrackletViewerApp\for_testing\readme.txt</param.server.readme>
     <param.target.type>subtarget.standalone</param.target.type>
     <param.support.packages />
     <param.web.mcr>true</param.web.mcr>
@@ -35,8 +38,6 @@
     <unset>
       <param.icon />
       <param.icons />
-      <param.version />
-      <param.authnamewatermark />
       <param.email />
       <param.company />
       <param.description />
@@ -65,36 +66,29 @@
       <param.log.file />
     </unset>
     <fileset.main>
-      <file>${PROJECT_ROOT}/TrackletViewerApp.m</file>
+      <file>${PROJECT_ROOT}\TrackletViewerApp.m</file>
     </fileset.main>
     <fileset.resources>
-      <file>${PROJECT_ROOT}/DataStore.m</file>
-      <file>${PROJECT_ROOT}/TrackletViewerApp.fig</file>
-      <file>${PROJECT_ROOT}/generateTracklets3D.m</file>
-      <file>${PROJECT_ROOT}/getCellTrackletsFrame.m</file>
-      <file>${PROJECT_ROOT}/trackletViewer3D.m</file>
-      <file>${PROJECT_ROOT}/trackletsToPosition.m</file>
+      <file>${PROJECT_ROOT}\DataStore.m</file>
+      <file>${PROJECT_ROOT}\generateTracklets3D.m</file>
+      <file>${PROJECT_ROOT}\getCellTrackletsFrame.m</file>
+      <file>${PROJECT_ROOT}\trackletsToPosition.m</file>
+      <file>${PROJECT_ROOT}\trackletViewer3D.m</file>
+      <file>${PROJECT_ROOT}\TrackletViewerApp.fig</file>
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="splash.png" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/splash.png</file>
-      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="readme.txt" optional="true">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/readme.txt</file>
-      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="TrackletViewerApp" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/TrackletViewerApp</file>
-      <file location="${PROJECT_ROOT}/TrackletViewerApp/for_testing" name="run_TrackletViewerApp.sh" optional="false">/home/pedro/Dropbox/Imperial/project/cell_annotator/TrackletViewerApp/for_testing/run_TrackletViewerApp.sh</file>
+      <file location="${PROJECT_ROOT}\TrackletViewerApp\for_testing" name="splash.png" optional="false">C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\TrackletViewerApp\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\TrackletViewerApp\for_testing" name="TrackletViewerApp.exe" optional="false">C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\TrackletViewerApp\for_testing\TrackletViewerApp.exe</file>
+      <file location="${PROJECT_ROOT}\TrackletViewerApp\for_testing" name="readme.txt" optional="true">C:\Users\pedro\Dropbox\Imperial\project\cell_annotator\TrackletViewerApp\for_testing\readme.txt</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/usr/local/MATLAB/R2014a</root>
+      <root>C:\Program Files\MATLAB\R2014a</root>
       <toolboxes>
-        <toolbox name="fixedpoint" />
         <toolbox name="embeddedcoder" />
         <toolbox name="matlabcoder" />
       </toolboxes>
-      <toolbox>
-        <fixedpoint>
-          <enabled>true</enabled>
-        </fixedpoint>
-      </toolbox>
       <toolbox>
         <embeddedcoder>
           <enabled>true</enabled>
@@ -107,18 +101,18 @@
       </toolbox>
     </matlab>
     <platform>
-      <unix>true</unix>
+      <unix>false</unix>
       <mac>false</mac>
-      <windows>false</windows>
+      <windows>true</windows>
       <win2k>false</win2k>
       <winxp>false</winxp>
       <vista>false</vista>
-      <linux>true</linux>
+      <linux>false</linux>
       <solaris>false</solaris>
-      <osver>3.13.0-24-generic</osver>
+      <osver>6.1</osver>
       <os32>false</os32>
       <os64>true</os64>
-      <arch>glnxa64</arch>
+      <arch>win64</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>
