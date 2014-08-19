@@ -8,7 +8,7 @@ function handles = trackletViewer(tracklets, options)
 	handles = [];
 	showLinkAnnomalies = false;
 	LINK_ANNOMALY_DISPLACEMENT = 10;
-	hideLongerThanOne = false;
+	hideLongerThan = 99;  % anything bigger than 10 means nothing is hidden since max nDislays = 10
 	%------------------------------------------------------------------Options
 	if nargin < 2; options = struct; end
 
@@ -20,8 +20,8 @@ function handles = trackletViewer(tracklets, options)
 	if isfield(options, 'maskedTracklets');
 		maskedTracklets = options.maskedTracklets;
 	end
-	if isfield(options, 'hideLongerThanOne');
-		hideLongerThanOne = options.hideLongerThanOne;
+	if isfield(options, 'hideLongerThan');
+		hideLongerThan = options.hideLongerThan;
 	end
 
 	timeDim = 2;
@@ -36,8 +36,8 @@ function handles = trackletViewer(tracklets, options)
 	% if showMask
 	% 	maskedTracklets = maskedTracklets(nonSinglecellsTracklet);
 	% end
-	if hideLongerThanOne
-		long = sum(min(1, sum(abs(tracklets), 3)), 2) > 3;
+	if hideLongerThan < 20
+		long = sum(min(1, sum(abs(tracklets), 3)), 2) > hideLongerThan;
 		tracklets = tracklets(~long, :, :);
 	end	
 	nTracklets = size(tracklets, trackletDim);

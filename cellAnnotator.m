@@ -48,7 +48,7 @@ function cellAnnotator
     
     colormaps = 'gray|jet|hsv|hot|cool';
     disableFilters = false;
-    hideLongerThanOne = false;
+    hideCompleteTracklets = false;
     
     testing = false;
     displayAnnomalies = true; % Mark annotations that might be erroneous
@@ -849,7 +849,7 @@ function cellAnnotator
 
     function toggleHideLinked()
         fprintf('Will toggle hiding tracklets longer than 1\n');
-        hideLongerThanOne = ~hideLongerThanOne;
+        hideCompleteTracklets = ~hideCompleteTracklets;
         requestRedraw()
     end
 
@@ -1422,7 +1422,7 @@ function cellAnnotator
                 hiddenCol = [80 80 0] / 255;
                 colorLinks = [0.3 0.3 1];
                 lineStyle = '-.';
-                markerWidth = 2;
+                markerWidth = 1.5;
         end
 
         % Display masked images for easier annotation
@@ -1525,7 +1525,12 @@ function cellAnnotator
             end
 
             showLinkAnnomalies = nDisplays > 2;
-            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', false, 'showLinkAnnomalies', showLinkAnnomalies, 'hideLongerThanOne', hideLongerThanOne));
+            if hideCompleteTracklets
+                hideLongerThan = nDisplays;
+            else
+                hideLongerThan = 99;
+            end
+            h = trackletViewer(tracklets, struct('showMask', get(hmaskcheck, 'Value'), 'maskedTracklets', maskedTracklets, 'showLabel', false, 'showLinkAnnomalies', showLinkAnnomalies, 'hideLongerThan', hideLongerThan));
 
 
             annotationHandles = [annotationHandles; h];
