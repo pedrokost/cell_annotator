@@ -1,0 +1,11 @@
+Cell annotator (2 days of work):
+	☐	1) refactor the code (it's a huge mess)
+	☐	2) Copy dot detections as annotation
+	☐	3) Copy link detections as annotations (cannot yet be done)
+	☐	5) New tab/window that displays the tracklets in 3d
+	☐	6) Elimintate uncessary filters
+	☐	7) Colormap: change marker colors for best visibility
+	☐	8) Help window
+	☐	11) Menu bar for basic tools (load dets...)
+	☐	12) Show dots should only toggle annotation dots
+	☐	13) Add a button show generated tracks to complement show links
