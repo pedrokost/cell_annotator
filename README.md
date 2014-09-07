@@ -85,7 +85,7 @@ links =
 
 ## TODO
 
-Please, see the TODO file for a list of remaining tasks
+Please, see the [TODO](TODO) file for a list of remaining tasks
 
 ## Pull requests
 
