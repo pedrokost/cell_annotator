@@ -1,11 +1,11 @@
-![cell annotator logo](https://raw.githubusercontent.com/pedrokost/cell_annotator/master/thumbnail.png "Cell Annotator") Cell Annotator
+![cell annotator logo](thumbnail.png "Cell Annotator") Cell Annotator
 ===================================
 
 A utility to facilitate the annotation of cell images with dots and connect the cells between consecutive frames (links).
 
 Dots represent the centroids of cells, while links connect the same cells across consecutive frames.
 
-![cell annotator screenshot](https://raw.githubusercontent.com/pedrokost/cell_annotator/master/screenshot.png "Cell Annotator")
+![cell annotator screenshot](screenshot.png "Cell Annotator")
 
 Two applications are provided:
 	
@@ -90,6 +90,11 @@ Please, see the TODO file for a list of remaining tasks
 ## Pull requests
 
 Good pull requests—patches, improvements, new features—are a fantastic help. They should remain focused in scope and avoid containing unrelated commits.
+
+## Related repositories
+
+* [MSc dissertation](https://github.com/pedrokost/cell_tracking_msc_report)
+* [Automatic Cell Detector and Tracker](https://github.com/pedrokost/cell_detector_and_tracker)
 
 ## Changelog
 
